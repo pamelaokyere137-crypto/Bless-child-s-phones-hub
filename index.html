@@ -1,1 +1,614 @@
-<html><head></head><body style="overflow-wrap: break-word; -webkit-nbsp-mode: space; line-break: after-white-space;"><div>&lt;!DOCTYPE html&gt;</div><div><br></div><div>&lt;html lang="en"&gt;</div><div>&lt;head&gt;</div><div>&nbsp; &lt;meta charset="UTF-8" /&gt;</div><div>&nbsp; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</div><div>&nbsp; &lt;title&gt;Bless Child's Phones Hub — Stock Manager&lt;/title&gt;</div><div>&nbsp; &lt;meta name="theme-color" content="#6B21A8" /&gt;</div><div>&nbsp; &lt;meta name="mobile-web-app-capable" content="yes" /&gt;</div><div>&nbsp; &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;</div><div>&nbsp; &lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /&gt;</div><div>&nbsp; &lt;meta name="apple-mobile-web-app-title" content="BC Phones Hub" /&gt;</div><div>&nbsp; &lt;link rel="manifest" href="manifest.json" /&gt;</div><div>&nbsp; &lt;style&gt;</div><div>&nbsp; &nbsp; @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Inter:wght@400;500&amp;display=swap');</div><div><br></div><div>```</div><div>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }</div><div><br></div><div>:root {</div><div>&nbsp; --violet: #6B21A8;</div><div>&nbsp; --violet-light: #A855F7;</div><div>&nbsp; --violet-soft: #EDE9FE;</div><div>&nbsp; --violet-mid: #7C3AED;</div><div>&nbsp; --white: #FFFFFF;</div><div>&nbsp; --gray: #F3F4F6;</div><div>&nbsp; --gray-mid: #E5E7EB;</div><div>&nbsp; --gray-text: #6B7280;</div><div>&nbsp; --dark: #1F1235;</div><div>&nbsp; --danger: #DC2626;</div><div>&nbsp; --warning: #D97706;</div><div>&nbsp; --success: #16A34A;</div><div>}</div><div><br></div><div>body {</div><div>&nbsp; font-family: 'Inter', sans-serif;</div><div>&nbsp; background: var(--gray);</div><div>&nbsp; color: var(--dark);</div><div>&nbsp; min-height: 100vh;</div><div>}</div><div><br></div><div>/* HEADER */</div><div>header {</div><div>&nbsp; background: var(--violet);</div><div>&nbsp; color: var(--white);</div><div>&nbsp; padding: 18px 24px;</div><div>&nbsp; display: flex;</div><div>&nbsp; align-items: center;</div><div>&nbsp; justify-content: space-between;</div><div>&nbsp; box-shadow: 0 2px 12px rgba(107,33,168,0.3);</div><div>}</div><div>header h1 {</div><div>&nbsp; font-family: 'Poppins', sans-serif;</div><div>&nbsp; font-size: 1.3rem;</div><div>&nbsp; font-weight: 700;</div><div>&nbsp; letter-spacing: 0.3px;</div><div>}</div><div>header span {</div><div>&nbsp; font-size: 0.8rem;</div><div>&nbsp; background: var(--violet-light);</div><div>&nbsp; padding: 4px 12px;</div><div>&nbsp; border-radius: 20px;</div><div>&nbsp; font-weight: 600;</div><div>}</div><div><br></div><div>/* SUMMARY CARDS */</div><div>.summary {</div><div>&nbsp; display: grid;</div><div>&nbsp; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));</div><div>&nbsp; gap: 14px;</div><div>&nbsp; padding: 20px 20px 0;</div><div>}</div><div>.card {</div><div>&nbsp; background: var(--white);</div><div>&nbsp; border-radius: 14px;</div><div>&nbsp; padding: 16px;</div><div>&nbsp; text-align: center;</div><div>&nbsp; box-shadow: 0 1px 6px rgba(0,0,0,0.07);</div><div>&nbsp; border-top: 4px solid var(--violet-light);</div><div>}</div><div>.card .num {</div><div>&nbsp; font-family: 'Poppins', sans-serif;</div><div>&nbsp; font-size: 1.8rem;</div><div>&nbsp; font-weight: 700;</div><div>&nbsp; color: var(--violet);</div><div>}</div><div>.card .label {</div><div>&nbsp; font-size: 0.72rem;</div><div>&nbsp; color: var(--gray-text);</div><div>&nbsp; margin-top: 4px;</div><div>&nbsp; text-transform: uppercase;</div><div>&nbsp; letter-spacing: 0.5px;</div><div>}</div><div><br></div><div>/* MAIN CONTENT */</div><div>.main { padding: 20px; display: flex; flex-direction: column; gap: 20px; }</div><div><br></div><div>/* ADD PRODUCT FORM */</div><div>.panel {</div><div>&nbsp; background: var(--white);</div><div>&nbsp; border-radius: 16px;</div><div>&nbsp; padding: 20px;</div><div>&nbsp; box-shadow: 0 1px 6px rgba(0,0,0,0.07);</div><div>}</div><div>.panel h2 {</div><div>&nbsp; font-family: 'Poppins', sans-serif;</div><div>&nbsp; font-size: 1rem;</div><div>&nbsp; font-weight: 600;</div><div>&nbsp; color: var(--violet);</div><div>&nbsp; margin-bottom: 16px;</div><div>&nbsp; display: flex;</div><div>&nbsp; align-items: center;</div><div>&nbsp; gap: 8px;</div><div>}</div><div>.form-grid {</div><div>&nbsp; display: grid;</div><div>&nbsp; grid-template-columns: 1fr 1fr;</div><div>&nbsp; gap: 12px;</div><div>}</div><div>.form-grid .full { grid-column: 1 / -1; }</div><div>label { font-size: 0.78rem; color: var(--gray-text); display: block; margin-bottom: 4px; font-weight: 500; }</div><div>input, select {</div><div>&nbsp; width: 100%;</div><div>&nbsp; padding: 10px 12px;</div><div>&nbsp; border: 1.5px solid var(--gray-mid);</div><div>&nbsp; border-radius: 10px;</div><div>&nbsp; font-size: 0.88rem;</div><div>&nbsp; font-family: 'Inter', sans-serif;</div><div>&nbsp; outline: none;</div><div>&nbsp; transition: border-color 0.2s;</div><div>&nbsp; background: var(--white);</div><div>}</div><div>input:focus, select:focus { border-color: var(--violet-light); }</div><div><br></div><div>.btn {</div><div>&nbsp; padding: 10px 20px;</div><div>&nbsp; border: none;</div><div>&nbsp; border-radius: 10px;</div><div>&nbsp; font-size: 0.88rem;</div><div>&nbsp; font-weight: 600;</div><div>&nbsp; cursor: pointer;</div><div>&nbsp; font-family: 'Poppins', sans-serif;</div><div>&nbsp; transition: opacity 0.2s;</div><div>}</div><div>.btn:hover { opacity: 0.88; }</div><div>.btn-primary { background: var(--violet); color: var(--white); width: 100%; margin-top: 4px; padding: 12px; }</div><div>.btn-sm { padding: 6px 14px; font-size: 0.78rem; }</div><div>.btn-danger { background: #FEE2E2; color: var(--danger); }</div><div>.btn-success { background: #DCFCE7; color: var(--success); }</div><div>.btn-warn { background: #FEF3C7; color: var(--warning); }</div><div><br></div><div>/* SEARCH &amp; FILTER */</div><div>.toolbar { display: flex; gap: 10px; flex-wrap: wrap; }</div><div>.toolbar input { flex: 1; min-width: 160px; }</div><div>.toolbar select { width: 140px; }</div><div><br></div><div>/* TABLE */</div><div>.table-wrap { overflow-x: auto; margin-top: 14px; }</div><div>table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }</div><div>thead th {</div><div>&nbsp; background: var(--violet-soft);</div><div>&nbsp; color: var(--violet);</div><div>&nbsp; padding: 10px 12px;</div><div>&nbsp; text-align: left;</div><div>&nbsp; font-weight: 600;</div><div>&nbsp; font-family: 'Poppins', sans-serif;</div><div>&nbsp; font-size: 0.75rem;</div><div>&nbsp; text-transform: uppercase;</div><div>&nbsp; letter-spacing: 0.4px;</div><div>}</div><div>tbody tr { border-bottom: 1px solid var(--gray-mid); }</div><div>tbody tr:hover { background: #FAF5FF; }</div><div>tbody td { padding: 10px 12px; vertical-align: middle; }</div><div><br></div><div>.badge {</div><div>&nbsp; display: inline-block;</div><div>&nbsp; padding: 3px 10px;</div><div>&nbsp; border-radius: 20px;</div><div>&nbsp; font-size: 0.72rem;</div><div>&nbsp; font-weight: 600;</div><div>}</div><div>.badge-ok { background: #DCFCE7; color: var(--success); }</div><div>.badge-low { background: #FEF3C7; color: var(--warning); }</div><div>.badge-out { background: #FEE2E2; color: var(--danger); }</div><div><br></div><div>.actions { display: flex; gap: 6px; flex-wrap: wrap; }</div><div><br></div><div>/* SALE MODAL */</div><div>.modal-overlay {</div><div>&nbsp; display: none;</div><div>&nbsp; position: fixed; inset: 0;</div><div>&nbsp; background: rgba(0,0,0,0.45);</div><div>&nbsp; z-index: 100;</div><div>&nbsp; align-items: center;</div><div>&nbsp; justify-content: center;</div><div>}</div><div>.modal-overlay.open { display: flex; }</div><div>.modal {</div><div>&nbsp; background: var(--white);</div><div>&nbsp; border-radius: 18px;</div><div>&nbsp; padding: 28px 24px;</div><div>&nbsp; width: 90%;</div><div>&nbsp; max-width: 360px;</div><div>&nbsp; box-shadow: 0 8px 32px rgba(107,33,168,0.2);</div><div>}</div><div>.modal h3 { font-family: 'Poppins', sans-serif; color: var(--violet); margin-bottom: 16px; }</div><div>.modal-actions { display: flex; gap: 10px; margin-top: 18px; }</div><div>.modal-actions .btn { flex: 1; }</div><div>.btn-cancel { background: var(--gray-mid); color: var(--dark); }</div><div><br></div><div>/* SALES LOG */</div><div>.log-item {</div><div>&nbsp; padding: 10px 0;</div><div>&nbsp; border-bottom: 1px solid var(--gray-mid);</div><div>&nbsp; font-size: 0.83rem;</div><div>&nbsp; display: flex;</div><div>&nbsp; justify-content: space-between;</div><div>&nbsp; align-items: center;</div><div>}</div><div>.log-item:last-child { border-bottom: none; }</div><div>.log-name { font-weight: 600; color: var(--dark); }</div><div>.log-meta { font-size: 0.75rem; color: var(--gray-text); margin-top: 2px; }</div><div>.log-amt { font-weight: 700; color: var(--violet); font-family: 'Poppins', sans-serif; }</div><div><br></div><div>.empty { text-align: center; padding: 30px; color: var(--gray-text); font-size: 0.85rem; }</div><div><br></div><div>/* ALERT */</div><div>.alert {</div><div>&nbsp; padding: 12px 16px;</div><div>&nbsp; border-radius: 10px;</div><div>&nbsp; font-size: 0.83rem;</div><div>&nbsp; margin-bottom: 12px;</div><div>&nbsp; display: none;</div><div>}</div><div>.alert.show { display: block; }</div><div>.alert-success { background: #DCFCE7; color: var(--success); }</div><div>.alert-error { background: #FEE2E2; color: var(--danger); }</div><div><br></div><div>footer { text-align: center; padding: 20px; font-size: 0.75rem; color: var(--gray-text); }</div><div>```</div><div><br></div><div>&nbsp; &lt;/style&gt;</div><div>&lt;/head&gt;</div><div>&lt;body&gt;</div><div><br></div><div>&lt;header&gt;</div><div>&nbsp; &lt;h1&gt;📱 Bless Child's Phones Hub&lt;/h1&gt;</div><div>&nbsp; &lt;span&gt;Stock Manager&lt;/span&gt;</div><div>&lt;/header&gt;</div><div><br></div><div>&lt;!-- SUMMARY --&gt;</div><div><br></div><div>&lt;div class="summary" id="summary"&gt;</div><div>&nbsp; &lt;div class="card"&gt;&lt;div class="num" id="s-total"&gt;0&lt;/div&gt;&lt;div class="label"&gt;Total Products&lt;/div&gt;&lt;/div&gt;</div><div>&nbsp; &lt;div class="card"&gt;&lt;div class="num" id="s-instock"&gt;0&lt;/div&gt;&lt;div class="label"&gt;In Stock&lt;/div&gt;&lt;/div&gt;</div><div>&nbsp; &lt;div class="card"&gt;&lt;div class="num" id="s-low"&gt;0&lt;/div&gt;&lt;div class="label"&gt;Low Stock&lt;/div&gt;&lt;/div&gt;</div><div>&nbsp; &lt;div class="card"&gt;&lt;div class="num" id="s-out"&gt;0&lt;/div&gt;&lt;div class="label"&gt;Out of Stock&lt;/div&gt;&lt;/div&gt;</div><div>&lt;/div&gt;</div><div><br></div><div>&lt;div class="main"&gt;</div><div><br></div><div>&nbsp; &lt;!-- ADD PRODUCT --&gt;</div><div><br></div><div>&nbsp; &lt;div class="panel"&gt;</div><div>&nbsp; &nbsp; &lt;h2&gt;➕ Add New Product&lt;/h2&gt;</div><div>&nbsp; &nbsp; &lt;div id="addAlert" class="alert"&gt;&lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;div class="form-grid"&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div class="full"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;label&gt;Product Name&lt;/label&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;input id="pName" type="text" placeholder="e.g. iPhone 14 Charger" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;label&gt;Category&lt;/label&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;select id="pCat" onchange="toggleCustomCat()"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/select&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;input id="pCatCustom" type="text" placeholder="Type your category here..." style="margin-top:8px; display:none;" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;label&gt;Quantity&lt;/label&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;input id="pQty" type="number" min="0" placeholder="0" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;label&gt;Price (GH₵)&lt;/label&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;input id="pPrice" type="number" min="0" step="0.01" placeholder="0.00" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;label&gt;Low Stock Alert (qty)&lt;/label&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;input id="pLow" type="number" min="1" placeholder="5" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;button class="btn btn-primary" onclick="addProduct()"&gt;Add Product to Stock&lt;/button&gt;</div><div>&nbsp; &lt;/div&gt;</div><div><br></div><div>&nbsp; &lt;!-- STOCK TABLE --&gt;</div><div><br></div><div>&nbsp; &lt;div class="panel"&gt;</div><div>&nbsp; &nbsp; &lt;h2&gt;📦 Current Stock&lt;/h2&gt;</div><div>&nbsp; &nbsp; &lt;div class="toolbar"&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;input type="text" id="searchInput" placeholder="Search product..." oninput="renderTable()" /&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;select id="filterCat" onchange="renderTable()"&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/select&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;div class="table-wrap"&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;table&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;thead&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;tr&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Product&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Category&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Qty&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Price&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Status&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Actions&lt;/th&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/tr&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/thead&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;tbody id="stockTable"&gt;&lt;/tbody&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/table&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;div id="emptyStock" class="empty" style="display:none;"&gt;No products yet. Add your first product above!&lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &lt;/div&gt;</div><div><br></div><div>&nbsp; &lt;!-- SALES LOG --&gt;</div><div><br></div><div>&nbsp; &lt;div class="panel"&gt;</div><div>&nbsp; &nbsp; &lt;h2&gt;🧾 Sales Log&lt;/h2&gt;</div><div>&nbsp; &nbsp; &lt;div id="salesLog"&gt;&lt;div class="empty"&gt;No sales recorded yet.&lt;/div&gt;&lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;div style="margin-top:12px; font-size:0.83rem; color:var(--gray-text);"&gt;</div><div>&nbsp; &nbsp; &nbsp; Total Revenue: &lt;strong id="totalRevenue" style="color:var(--violet); font-family:'Poppins',sans-serif;"&gt;GH₵ 0.00&lt;/strong&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &lt;/div&gt;</div><div><br></div><div>&lt;/div&gt;</div><div><br></div><div>&lt;!-- SALE MODAL --&gt;</div><div><br></div><div>&lt;div class="modal-overlay" id="saleModal"&gt;</div><div>&nbsp; &lt;div class="modal"&gt;</div><div>&nbsp; &nbsp; &lt;h3&gt;Record a Sale&lt;/h3&gt;</div><div>&nbsp; &nbsp; &lt;p style="font-size:0.85rem; color:var(--gray-text); margin-bottom:14px;" id="modalProductName"&gt;&lt;/p&gt;</div><div>&nbsp; &nbsp; &lt;label&gt;Quantity Sold&lt;/label&gt;</div><div>&nbsp; &nbsp; &lt;input type="number" id="saleQty" min="1" placeholder="1" style="margin-bottom:10px;" /&gt;</div><div>&nbsp; &nbsp; &lt;label&gt;Selling Price (GH₵) per item&lt;/label&gt;</div><div>&nbsp; &nbsp; &lt;input type="number" id="salePrice" min="0" step="0.01" placeholder="0.00" /&gt;</div><div>&nbsp; &nbsp; &lt;div class="modal-actions"&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;button class="btn btn-cancel" onclick="closeModal()"&gt;Cancel&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;button class="btn btn-primary" style="margin-top:0;" onclick="confirmSale()"&gt;Confirm Sale&lt;/button&gt;</div><div>&nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &lt;/div&gt;</div><div>&lt;/div&gt;</div><div><br></div><div>&lt;!-- INSTALL BANNER --&gt;</div><div><br></div><div>&lt;div id="installBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#6B21A8; color:white; padding:14px 20px; align-items:center; justify-content:space-between; z-index:200; box-shadow:0 -2px 12px rgba(0,0,0,0.2);"&gt;</div><div>&nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &lt;div style="font-family:'Poppins',sans-serif; font-weight:600; font-size:0.9rem;"&gt;📱 Add to your phone!&lt;/div&gt;</div><div>&nbsp; &nbsp; &lt;div style="font-size:0.75rem; opacity:0.85; margin-top:2px;"&gt;Install as an app — no browser needed&lt;/div&gt;</div><div>&nbsp; &lt;/div&gt;</div><div>&nbsp; &lt;div style="display:flex; gap:10px; align-items:center;"&gt;</div><div>&nbsp; &nbsp; &lt;button id="installBtn" style="background:white; color:#6B21A8; border:none; padding:8px 16px; border-radius:8px; font-weight:700; font-size:0.83rem; cursor:pointer; font-family:'Poppins',sans-serif;"&gt;Install&lt;/button&gt;</div><div>&nbsp; &nbsp; &lt;button id="dismissInstall" style="background:transparent; color:white; border:none; font-size:1.2rem; cursor:pointer;"&gt;✕&lt;/button&gt;</div><div>&nbsp; &lt;/div&gt;</div><div>&lt;/div&gt;</div><div><br></div><div>&lt;footer&gt;Bless Child's Phones Hub &amp;copy; 2026 &amp;mdash; Stock Management System&lt;/footer&gt;</div><div><br></div><div>&lt;script&gt;</div><div>&nbsp; let products = JSON.parse(localStorage.getItem('bcp_products') || '[]');</div><div>&nbsp; let sales = JSON.parse(localStorage.getItem('bcp_sales') || '[]');</div><div>&nbsp; let saleTargetId = null;</div><div><br></div><div>&nbsp; function save() {</div><div>&nbsp; &nbsp; localStorage.setItem('bcp_products', JSON.stringify(products));</div><div>&nbsp; &nbsp; localStorage.setItem('bcp_sales', JSON.stringify(sales));</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function showAlert(id, msg, type) {</div><div>&nbsp; &nbsp; const el = document.getElementById(id);</div><div>&nbsp; &nbsp; el.textContent = msg;</div><div>&nbsp; &nbsp; el.className = `alert show alert-${type}`;</div><div>&nbsp; &nbsp; setTimeout(() =&gt; el.className = 'alert', 3000);</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function getStatus(p) {</div><div>&nbsp; &nbsp; if (p.qty === 0) return 'out';</div><div>&nbsp; &nbsp; if (p.qty &lt;= p.low) return 'low';</div><div>&nbsp; &nbsp; return 'ok';</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function statusBadge(p) {</div><div>&nbsp; &nbsp; const s = getStatus(p);</div><div>&nbsp; &nbsp; if (s === 'out') return '&lt;span class="badge badge-out"&gt;Out of Stock&lt;/span&gt;';</div><div>&nbsp; &nbsp; if (s === 'low') return '&lt;span class="badge badge-low"&gt;Low Stock&lt;/span&gt;';</div><div>&nbsp; &nbsp; return '&lt;span class="badge badge-ok"&gt;In Stock&lt;/span&gt;';</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function updateSummary() {</div><div>&nbsp; &nbsp; document.getElementById('s-total').textContent = products.length;</div><div>&nbsp; &nbsp; document.getElementById('s-instock').textContent = products.filter(p =&gt; getStatus(p) === 'ok').length;</div><div>&nbsp; &nbsp; document.getElementById('s-low').textContent = products.filter(p =&gt; getStatus(p) === 'low').length;</div><div>&nbsp; &nbsp; document.getElementById('s-out').textContent = products.filter(p =&gt; getStatus(p) === 'out').length;</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function renderTable() {</div><div>&nbsp; &nbsp; const q = document.getElementById('searchInput').value.toLowerCase();</div><div>&nbsp; &nbsp; const cat = document.getElementById('filterCat').value;</div><div>&nbsp; &nbsp; let filtered = products.filter(p =&gt;</div><div>&nbsp; &nbsp; &nbsp; (!q || p.name.toLowerCase().includes(q)) &amp;&amp;</div><div>&nbsp; &nbsp; &nbsp; (!cat || p.cat === cat)</div><div>&nbsp; &nbsp; );</div><div><br></div><div>&nbsp; &nbsp; const tbody = document.getElementById('stockTable');</div><div>&nbsp; &nbsp; const empty = document.getElementById('emptyStock');</div><div><br></div><div>&nbsp; &nbsp; if (filtered.length === 0) {</div><div>&nbsp; &nbsp; &nbsp; tbody.innerHTML = '';</div><div>&nbsp; &nbsp; &nbsp; empty.style.display = 'block';</div><div>&nbsp; &nbsp; } else {</div><div>&nbsp; &nbsp; &nbsp; empty.style.display = 'none';</div><div>&nbsp; &nbsp; &nbsp; tbody.innerHTML = filtered.map(p =&gt; `</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;tr&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;&lt;strong&gt;${p.name}&lt;/strong&gt;&lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;${p.cat}&lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;${p.qty}&lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;GH₵ ${parseFloat(p.price).toFixed(2)}&lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;${statusBadge(p)}&lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class="actions"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="btn btn-sm btn-success" onclick="openSale('${p.id}')"&gt;Sell&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="btn btn-sm btn-warn" onclick="restock('${p.id}')"&gt;Restock&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button class="btn btn-sm btn-danger" onclick="deleteProduct('${p.id}')"&gt;Remove&lt;/button&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/td&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/tr&gt;</div><div>&nbsp; &nbsp; &nbsp; `).join('');</div><div>&nbsp; &nbsp; }</div><div>&nbsp; &nbsp; updateSummary();</div><div>&nbsp; }</div><div><br></div><div>&nbsp; const DEFAULT_CATS = ['Chargers','Covers &amp; Cases','Screen Protectors','Music Boxes','Tripods','Earphones','Cables','Power Banks'];</div><div>&nbsp; let customCats = JSON.parse(localStorage.getItem('bcp_custom_cats') || '[]');</div><div><br></div><div>&nbsp; function allCats() {</div><div>&nbsp; &nbsp; return [...DEFAULT_CATS, ...customCats];</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function populateCatDropdowns() {</div><div>&nbsp; &nbsp; const pCat = document.getElementById('pCat');</div><div>&nbsp; &nbsp; const filterCat = document.getElementById('filterCat');</div><div>&nbsp; &nbsp; const cats = allCats();</div><div><br></div><div>&nbsp; &nbsp; pCat.innerHTML = '&lt;option value=""&gt;Select category&lt;/option&gt;' +</div><div>&nbsp; &nbsp; &nbsp; cats.map(c =&gt; `&lt;option&gt;${c}&lt;/option&gt;`).join('') +</div><div>&nbsp; &nbsp; &nbsp; '&lt;option&gt;Other&lt;/option&gt;';</div><div><br></div><div>&nbsp; &nbsp; filterCat.innerHTML = '&lt;option value=""&gt;All Categories&lt;/option&gt;' +</div><div>&nbsp; &nbsp; &nbsp; cats.map(c =&gt; `&lt;option&gt;${c}&lt;/option&gt;`).join('');</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function addCustomCat(name) {</div><div>&nbsp; &nbsp; if (!customCats.includes(name) &amp;&amp; !DEFAULT_CATS.includes(name)) {</div><div>&nbsp; &nbsp; &nbsp; customCats.push(name);</div><div>&nbsp; &nbsp; &nbsp; localStorage.setItem('bcp_custom_cats', JSON.stringify(customCats));</div><div>&nbsp; &nbsp; &nbsp; populateCatDropdowns();</div><div>&nbsp; &nbsp; }</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function toggleCustomCat() {</div><div>&nbsp; &nbsp; const sel = document.getElementById('pCat').value;</div><div>&nbsp; &nbsp; const custom = document.getElementById('pCatCustom');</div><div>&nbsp; &nbsp; custom.style.display = sel === 'Other' ? 'block' : 'none';</div><div>&nbsp; &nbsp; if (sel !== 'Other') custom.value = '';</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function addProduct() {</div><div>&nbsp; &nbsp; const name = document.getElementById('pName').value.trim();</div><div>&nbsp; &nbsp; const selCat = document.getElementById('pCat').value;</div><div>&nbsp; &nbsp; const customCat = document.getElementById('pCatCustom').value.trim();</div><div>&nbsp; &nbsp; const cat = selCat === 'Other' ? (customCat || 'Other') : selCat;</div><div>&nbsp; &nbsp; const qty = parseInt(document.getElementById('pQty').value);</div><div>&nbsp; &nbsp; const price = parseFloat(document.getElementById('pPrice').value);</div><div>&nbsp; &nbsp; const low = parseInt(document.getElementById('pLow').value) || 5;</div><div><br></div><div>&nbsp; &nbsp; if (!name) return showAlert('addAlert', 'Please enter a product name.', 'error');</div><div>&nbsp; &nbsp; if (!cat) return showAlert('addAlert', 'Please select a category.', 'error');</div><div>&nbsp; &nbsp; if (isNaN(qty) || qty &lt; 0) return showAlert('addAlert', 'Please enter a valid quantity.', 'error');</div><div>&nbsp; &nbsp; if (isNaN(price) || price &lt; 0) return showAlert('addAlert', 'Please enter a valid price.', 'error');</div><div><br></div><div>&nbsp; &nbsp; if (selCat === 'Other' &amp;&amp; customCat) addCustomCat(cat);</div><div>&nbsp; &nbsp; products.push({ id: Date.now().toString(), name, cat, qty, price, low });</div><div>&nbsp; &nbsp; save();</div><div>&nbsp; &nbsp; renderTable();</div><div>&nbsp; &nbsp; renderSales();</div><div>&nbsp; &nbsp; showAlert('addAlert', `"${name}" added successfully!`, 'success');</div><div><br></div><div>&nbsp; &nbsp; document.getElementById('pName').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pCat').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pQty').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pPrice').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pLow').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pCatCustom').value = '';</div><div>&nbsp; &nbsp; document.getElementById('pCatCustom').style.display = 'none';</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function deleteProduct(id) {</div><div>&nbsp; &nbsp; if (!confirm('Remove this product from stock?')) return;</div><div>&nbsp; &nbsp; products = products.filter(p =&gt; p.id !== id);</div><div>&nbsp; &nbsp; save();</div><div>&nbsp; &nbsp; renderTable();</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function restock(id) {</div><div>&nbsp; &nbsp; const amt = prompt('How many units to add?');</div><div>&nbsp; &nbsp; const n = parseInt(amt);</div><div>&nbsp; &nbsp; if (isNaN(n) || n &lt;= 0) return;</div><div>&nbsp; &nbsp; const p = products.find(x =&gt; x.id === id);</div><div>&nbsp; &nbsp; if (p) { p.qty += n; save(); renderTable(); }</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function openSale(id) {</div><div>&nbsp; &nbsp; saleTargetId = id;</div><div>&nbsp; &nbsp; const p = products.find(x =&gt; x.id === id);</div><div>&nbsp; &nbsp; document.getElementById('modalProductName').textContent = `${p.name} — Available: ${p.qty} units`;</div><div>&nbsp; &nbsp; document.getElementById('saleQty').value = '';</div><div>&nbsp; &nbsp; document.getElementById('salePrice').value = p.price;</div><div>&nbsp; &nbsp; document.getElementById('saleModal').classList.add('open');</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function closeModal() {</div><div>&nbsp; &nbsp; document.getElementById('saleModal').classList.remove('open');</div><div>&nbsp; &nbsp; saleTargetId = null;</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function confirmSale() {</div><div>&nbsp; &nbsp; const qty = parseInt(document.getElementById('saleQty').value);</div><div>&nbsp; &nbsp; const price = parseFloat(document.getElementById('salePrice').value);</div><div>&nbsp; &nbsp; const p = products.find(x =&gt; x.id === saleTargetId);</div><div>&nbsp; &nbsp; if (!p) return;</div><div>&nbsp; &nbsp; if (isNaN(qty) || qty &lt;= 0) return alert('Enter a valid quantity sold.');</div><div>&nbsp; &nbsp; if (qty &gt; p.qty) return alert(`Only ${p.qty} units available.`);</div><div>&nbsp; &nbsp; if (isNaN(price) || price &lt; 0) return alert('Enter a valid selling price.');</div><div><br></div><div>&nbsp; &nbsp; p.qty -= qty;</div><div>&nbsp; &nbsp; sales.unshift({</div><div>&nbsp; &nbsp; &nbsp; id: Date.now().toString(),</div><div>&nbsp; &nbsp; &nbsp; productName: p.name,</div><div>&nbsp; &nbsp; &nbsp; qty,</div><div>&nbsp; &nbsp; &nbsp; price,</div><div>&nbsp; &nbsp; &nbsp; total: qty * price,</div><div>&nbsp; &nbsp; &nbsp; date: new Date().toLocaleString()</div><div>&nbsp; &nbsp; });</div><div>&nbsp; &nbsp; save();</div><div>&nbsp; &nbsp; renderTable();</div><div>&nbsp; &nbsp; renderSales();</div><div>&nbsp; &nbsp; closeModal();</div><div>&nbsp; }</div><div><br></div><div>&nbsp; function renderSales() {</div><div>&nbsp; &nbsp; const log = document.getElementById('salesLog');</div><div>&nbsp; &nbsp; if (sales.length === 0) {</div><div>&nbsp; &nbsp; &nbsp; log.innerHTML = '&lt;div class="empty"&gt;No sales recorded yet.&lt;/div&gt;';</div><div>&nbsp; &nbsp; &nbsp; document.getElementById('totalRevenue').textContent = 'GH₵ 0.00';</div><div>&nbsp; &nbsp; &nbsp; return;</div><div>&nbsp; &nbsp; }</div><div>&nbsp; &nbsp; const total = sales.reduce((s, x) =&gt; s + x.total, 0);</div><div>&nbsp; &nbsp; document.getElementById('totalRevenue').textContent = `GH₵ ${total.toFixed(2)}`;</div><div>&nbsp; &nbsp; log.innerHTML = sales.slice(0, 20).map(s =&gt; `</div><div>&nbsp; &nbsp; &nbsp; &lt;div class="log-item"&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class="log-name"&gt;${s.productName}&lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class="log-meta"&gt;Qty: ${s.qty} &amp;bull; GH₵${parseFloat(s.price).toFixed(2)}/unit &amp;bull; ${s.date}&lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class="log-amt"&gt;GH₵ ${s.total.toFixed(2)}&lt;/div&gt;</div><div>&nbsp; &nbsp; &nbsp; &lt;/div&gt;</div><div>&nbsp; &nbsp; `).join('');</div><div>&nbsp; }</div><div><br></div><div>&nbsp; // Initial render</div><div>&nbsp; populateCatDropdowns();</div><div>&nbsp; renderTable();</div><div>&nbsp; renderSales();</div><div>&lt;/script&gt;</div><div><br></div><div>&lt;script&gt;</div><div>&nbsp; if ('serviceWorker' in navigator) {</div><div>&nbsp; &nbsp; window.addEventListener('load', () =&gt; {</div><div>&nbsp; &nbsp; &nbsp; navigator.serviceWorker.register('sw.js')</div><div>&nbsp; &nbsp; &nbsp; &nbsp; .then(() =&gt; console.log('Service Worker registered'))</div><div>&nbsp; &nbsp; &nbsp; &nbsp; .catch(err =&gt; console.log('SW error:', err));</div><div>&nbsp; &nbsp; });</div><div>&nbsp; }</div><div><br></div><div>&nbsp; // Install prompt</div><div>&nbsp; let deferredPrompt;</div><div>&nbsp; window.addEventListener('beforeinstallprompt', (e) =&gt; {</div><div>&nbsp; &nbsp; e.preventDefault();</div><div>&nbsp; &nbsp; deferredPrompt = e;</div><div>&nbsp; &nbsp; document.getElementById('installBanner').style.display = 'flex';</div><div>&nbsp; });</div><div><br></div><div>&nbsp; document.getElementById('installBtn').addEventListener('click', async () =&gt; {</div><div>&nbsp; &nbsp; if (deferredPrompt) {</div><div>&nbsp; &nbsp; &nbsp; deferredPrompt.prompt();</div><div>&nbsp; &nbsp; &nbsp; const { outcome } = await deferredPrompt.userChoice;</div><div>&nbsp; &nbsp; &nbsp; deferredPrompt = null;</div><div>&nbsp; &nbsp; &nbsp; document.getElementById('installBanner').style.display = 'none';</div><div>&nbsp; &nbsp; }</div><div>&nbsp; });</div><div><br></div><div>&nbsp; document.getElementById('dismissInstall').addEventListener('click', () =&gt; {</div><div>&nbsp; &nbsp; document.getElementById('installBanner').style.display = 'none';</div><div>&nbsp; });</div><div>&lt;/script&gt;</div><div><br></div><div>&lt;/body&gt;</div><div>&lt;/html&gt;</div></body></html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bless Child's Phones Hub — Stock Manager</title>
+  <meta name="theme-color" content="#6B21A8" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BC Phones Hub" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
+```
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --violet: #6B21A8;
+  --violet-light: #A855F7;
+  --violet-soft: #EDE9FE;
+  --violet-mid: #7C3AED;
+  --white: #FFFFFF;
+  --gray: #F3F4F6;
+  --gray-mid: #E5E7EB;
+  --gray-text: #6B7280;
+  --dark: #1F1235;
+  --danger: #DC2626;
+  --warning: #D97706;
+  --success: #16A34A;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--gray);
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  background: var(--violet);
+  color: var(--white);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(107,33,168,0.3);
+}
+header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+header span {
+  font-size: 0.8rem;
+  background: var(--violet-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* SUMMARY CARDS */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  padding: 20px 20px 0;
+}
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  border-top: 4px solid var(--violet-light);
+}
+.card .num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--violet);
+}
+.card .label {
+  font-size: 0.72rem;
+  color: var(--gray-text);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* MAIN CONTENT */
+.main { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+
+/* ADD PRODUCT FORM */
+.panel {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.panel h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--violet);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.form-grid .full { grid-column: 1 / -1; }
+label { font-size: 0.78rem; color: var(--gray-text); display: block; margin-bottom: 4px; font-weight: 500; }
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--gray-mid);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--white);
+}
+input:focus, select:focus { border-color: var(--violet-light); }
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.88; }
+.btn-primary { background: var(--violet); color: var(--white); width: 100%; margin-top: 4px; padding: 12px; }
+.btn-sm { padding: 6px 14px; font-size: 0.78rem; }
+.btn-danger { background: #FEE2E2; color: var(--danger); }
+.btn-success { background: #DCFCE7; color: var(--success); }
+.btn-warn { background: #FEF3C7; color: var(--warning); }
+
+/* SEARCH & FILTER */
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; }
+.toolbar input { flex: 1; min-width: 160px; }
+.toolbar select { width: 140px; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+thead th {
+  background: var(--violet-soft);
+  color: var(--violet);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+tbody tr { border-bottom: 1px solid var(--gray-mid); }
+tbody tr:hover { background: #FAF5FF; }
+tbody td { padding: 10px 12px; vertical-align: middle; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.badge-ok { background: #DCFCE7; color: var(--success); }
+.badge-low { background: #FEF3C7; color: var(--warning); }
+.badge-out { background: #FEE2E2; color: var(--danger); }
+
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* SALE MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 28px 24px;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 8px 32px rgba(107,33,168,0.2);
+}
+.modal h3 { font-family: 'Poppins', sans-serif; color: var(--violet); margin-bottom: 16px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+.modal-actions .btn { flex: 1; }
+.btn-cancel { background: var(--gray-mid); color: var(--dark); }
+
+/* SALES LOG */
+.log-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-mid);
+  font-size: 0.83rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.log-item:last-child { border-bottom: none; }
+.log-name { font-weight: 600; color: var(--dark); }
+.log-meta { font-size: 0.75rem; color: var(--gray-text); margin-top: 2px; }
+.log-amt { font-weight: 700; color: var(--violet); font-family: 'Poppins', sans-serif; }
+
+.empty { text-align: center; padding: 30px; color: var(--gray-text); font-size: 0.85rem; }
+
+/* ALERT */
+.alert {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.83rem;
+  margin-bottom: 12px;
+  display: none;
+}
+.alert.show { display: block; }
+.alert-success { background: #DCFCE7; color: var(--success); }
+.alert-error { background: #FEE2E2; color: var(--danger); }
+
+footer { text-align: center; padding: 20px; font-size: 0.75rem; color: var(--gray-text); }
+```
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📱 Bless Child's Phones Hub</h1>
+  <span>Stock Manager</span>
+</header>
+
+<!-- SUMMARY -->
+
+<div class="summary" id="summary">
+  <div class="card"><div class="num" id="s-total">0</div><div class="label">Total Products</div></div>
+  <div class="card"><div class="num" id="s-instock">0</div><div class="label">In Stock</div></div>
+  <div class="card"><div class="num" id="s-low">0</div><div class="label">Low Stock</div></div>
+  <div class="card"><div class="num" id="s-out">0</div><div class="label">Out of Stock</div></div>
+</div>
+
+<div class="main">
+
+  <!-- ADD PRODUCT -->
+
+  <div class="panel">
+    <h2>➕ Add New Product</h2>
+    <div id="addAlert" class="alert"></div>
+    <div class="form-grid">
+      <div class="full">
+        <label>Product Name</label>
+        <input id="pName" type="text" placeholder="e.g. iPhone 14 Charger" />
+      </div>
+      <div>
+        <label>Category</label>
+        <select id="pCat" onchange="toggleCustomCat()">
+        </select>
+        <input id="pCatCustom" type="text" placeholder="Type your category here..." style="margin-top:8px; display:none;" />
+      </div>
+      <div>
+        <label>Quantity</label>
+        <input id="pQty" type="number" min="0" placeholder="0" />
+      </div>
+      <div>
+        <label>Price (GH₵)</label>
+        <input id="pPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+      </div>
+      <div>
+        <label>Low Stock Alert (qty)</label>
+        <input id="pLow" type="number" min="1" placeholder="5" />
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="addProduct()">Add Product to Stock</button>
+  </div>
+
+  <!-- STOCK TABLE -->
+
+  <div class="panel">
+    <h2>📦 Current Stock</h2>
+    <div class="toolbar">
+      <input type="text" id="searchInput" placeholder="Search product..." oninput="renderTable()" />
+      <select id="filterCat" onchange="renderTable()">
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="stockTable"></tbody>
+      </table>
+      <div id="emptyStock" class="empty" style="display:none;">No products yet. Add your first product above!</div>
+    </div>
+  </div>
+
+  <!-- SALES LOG -->
+
+  <div class="panel">
+    <h2>🧾 Sales Log</h2>
+    <div id="salesLog"><div class="empty">No sales recorded yet.</div></div>
+    <div style="margin-top:12px; font-size:0.83rem; color:var(--gray-text);">
+      Total Revenue: <strong id="totalRevenue" style="color:var(--violet); font-family:'Poppins',sans-serif;">GH₵ 0.00</strong>
+    </div>
+  </div>
+
+</div>
+
+<!-- SALE MODAL -->
+
+<div class="modal-overlay" id="saleModal">
+  <div class="modal">
+    <h3>Record a Sale</h3>
+    <p style="font-size:0.85rem; color:var(--gray-text); margin-bottom:14px;" id="modalProductName"></p>
+    <label>Quantity Sold</label>
+    <input type="number" id="saleQty" min="1" placeholder="1" style="margin-bottom:10px;" />
+    <label>Selling Price (GH₵) per item</label>
+    <input type="number" id="salePrice" min="0" step="0.01" placeholder="0.00" />
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" style="margin-top:0;" onclick="confirmSale()">Confirm Sale</button>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL BANNER -->
+
+<div id="installBanner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#6B21A8; color:white; padding:14px 20px; align-items:center; justify-content:space-between; z-index:200; box-shadow:0 -2px 12px rgba(0,0,0,0.2);">
+  <div>
+    <div style="font-family:'Poppins',sans-serif; font-weight:600; font-size:0.9rem;">📱 Add to your phone!</div>
+    <div style="font-size:0.75rem; opacity:0.85; margin-top:2px;">Install as an app — no browser needed</div>
+  </div>
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button id="installBtn" style="background:white; color:#6B21A8; border:none; padding:8px 16px; border-radius:8px; font-weight:700; font-size:0.83rem; cursor:pointer; font-family:'Poppins',sans-serif;">Install</button>
+    <button id="dismissInstall" style="background:transparent; color:white; border:none; font-size:1.2rem; cursor:pointer;">✕</button>
+  </div>
+</div>
+
+<footer>Bless Child's Phones Hub &copy; 2026 &mdash; Stock Management System</footer>
+
+<script>
+  let products = JSON.parse(localStorage.getItem('bcp_products') || '[]');
+  let sales = JSON.parse(localStorage.getItem('bcp_sales') || '[]');
+  let saleTargetId = null;
+
+  function save() {
+    localStorage.setItem('bcp_products', JSON.stringify(products));
+    localStorage.setItem('bcp_sales', JSON.stringify(sales));
+  }
+
+  function showAlert(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = `alert show alert-${type}`;
+    setTimeout(() => el.className = 'alert', 3000);
+  }
+
+  function getStatus(p) {
+    if (p.qty === 0) return 'out';
+    if (p.qty <= p.low) return 'low';
+    return 'ok';
+  }
+
+  function statusBadge(p) {
+    const s = getStatus(p);
+    if (s === 'out') return '<span class="badge badge-out">Out of Stock</span>';
+    if (s === 'low') return '<span class="badge badge-low">Low Stock</span>';
+    return '<span class="badge badge-ok">In Stock</span>';
+  }
+
+  function updateSummary() {
+    document.getElementById('s-total').textContent = products.length;
+    document.getElementById('s-instock').textContent = products.filter(p => getStatus(p) === 'ok').length;
+    document.getElementById('s-low').textContent = products.filter(p => getStatus(p) === 'low').length;
+    document.getElementById('s-out').textContent = products.filter(p => getStatus(p) === 'out').length;
+  }
+
+  function renderTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const cat = document.getElementById('filterCat').value;
+    let filtered = products.filter(p =>
+      (!q || p.name.toLowerCase().includes(q)) &&
+      (!cat || p.cat === cat)
+    );
+
+    const tbody = document.getElementById('stockTable');
+    const empty = document.getElementById('emptyStock');
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      tbody.innerHTML = filtered.map(p => `
+        <tr>
+          <td><strong>${p.name}</strong></td>
+          <td>${p.cat}</td>
+          <td>${p.qty}</td>
+          <td>GH₵ ${parseFloat(p.price).toFixed(2)}</td>
+          <td>${statusBadge(p)}</td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-sm btn-success" onclick="openSale('${p.id}')">Sell</button>
+              <button class="btn btn-sm btn-warn" onclick="restock('${p.id}')">Restock</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteProduct('${p.id}')">Remove</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+    updateSummary();
+  }
+
+  const DEFAULT_CATS = ['Chargers','Covers & Cases','Screen Protectors','Music Boxes','Tripods','Earphones','Cables','Power Banks'];
+  let customCats = JSON.parse(localStorage.getItem('bcp_custom_cats') || '[]');
+
+  function allCats() {
+    return [...DEFAULT_CATS, ...customCats];
+  }
+
+  function populateCatDropdowns() {
+    const pCat = document.getElementById('pCat');
+    const filterCat = document.getElementById('filterCat');
+    const cats = allCats();
+
+    pCat.innerHTML = '<option value="">Select category</option>' +
+      cats.map(c => `<option>${c}</option>`).join('') +
+      '<option>Other</option>';
+
+    filterCat.innerHTML = '<option value="">All Categories</option>' +
+      cats.map(c => `<option>${c}</option>`).join('');
+  }
+
+  function addCustomCat(name) {
+    if (!customCats.includes(name) && !DEFAULT_CATS.includes(name)) {
+      customCats.push(name);
+      localStorage.setItem('bcp_custom_cats', JSON.stringify(customCats));
+      populateCatDropdowns();
+    }
+  }
+
+  function toggleCustomCat() {
+    const sel = document.getElementById('pCat').value;
+    const custom = document.getElementById('pCatCustom');
+    custom.style.display = sel === 'Other' ? 'block' : 'none';
+    if (sel !== 'Other') custom.value = '';
+  }
+
+  function addProduct() {
+    const name = document.getElementById('pName').value.trim();
+    const selCat = document.getElementById('pCat').value;
+    const customCat = document.getElementById('pCatCustom').value.trim();
+    const cat = selCat === 'Other' ? (customCat || 'Other') : selCat;
+    const qty = parseInt(document.getElementById('pQty').value);
+    const price = parseFloat(document.getElementById('pPrice').value);
+    const low = parseInt(document.getElementById('pLow').value) || 5;
+
+    if (!name) return showAlert('addAlert', 'Please enter a product name.', 'error');
+    if (!cat) return showAlert('addAlert', 'Please select a category.', 'error');
+    if (isNaN(qty) || qty < 0) return showAlert('addAlert', 'Please enter a valid quantity.', 'error');
+    if (isNaN(price) || price < 0) return showAlert('addAlert', 'Please enter a valid price.', 'error');
+
+    if (selCat === 'Other' && customCat) addCustomCat(cat);
+    products.push({ id: Date.now().toString(), name, cat, qty, price, low });
+    save();
+    renderTable();
+    renderSales();
+    showAlert('addAlert', `"${name}" added successfully!`, 'success');
+
+    document.getElementById('pName').value = '';
+    document.getElementById('pCat').value = '';
+    document.getElementById('pQty').value = '';
+    document.getElementById('pPrice').value = '';
+    document.getElementById('pLow').value = '';
+    document.getElementById('pCatCustom').value = '';
+    document.getElementById('pCatCustom').style.display = 'none';
+  }
+
+  function deleteProduct(id) {
+    if (!confirm('Remove this product from stock?')) return;
+    products = products.filter(p => p.id !== id);
+    save();
+    renderTable();
+  }
+
+  function restock(id) {
+    const amt = prompt('How many units to add?');
+    const n = parseInt(amt);
+    if (isNaN(n) || n <= 0) return;
+    const p = products.find(x => x.id === id);
+    if (p) { p.qty += n; save(); renderTable(); }
+  }
+
+  function openSale(id) {
+    saleTargetId = id;
+    const p = products.find(x => x.id === id);
+    document.getElementById('modalProductName').textContent = `${p.name} — Available: ${p.qty} units`;
+    document.getElementById('saleQty').value = '';
+    document.getElementById('salePrice').value = p.price;
+    document.getElementById('saleModal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('saleModal').classList.remove('open');
+    saleTargetId = null;
+  }
+
+  function confirmSale() {
+    const qty = parseInt(document.getElementById('saleQty').value);
+    const price = parseFloat(document.getElementById('salePrice').value);
+    const p = products.find(x => x.id === saleTargetId);
+    if (!p) return;
+    if (isNaN(qty) || qty <= 0) return alert('Enter a valid quantity sold.');
+    if (qty > p.qty) return alert(`Only ${p.qty} units available.`);
+    if (isNaN(price) || price < 0) return alert('Enter a valid selling price.');
+
+    p.qty -= qty;
+    sales.unshift({
+      id: Date.now().toString(),
+      productName: p.name,
+      qty,
+      price,
+      total: qty * price,
+      date: new Date().toLocaleString()
+    });
+    save();
+    renderTable();
+    renderSales();
+    closeModal();
+  }
+
+  function renderSales() {
+    const log = document.getElementById('salesLog');
+    if (sales.length === 0) {
+      log.innerHTML = '<div class="empty">No sales recorded yet.</div>';
+      document.getElementById('totalRevenue').textContent = 'GH₵ 0.00';
+      return;
+    }
+    const total = sales.reduce((s, x) => s + x.total, 0);
+    document.getElementById('totalRevenue').textContent = `GH₵ ${total.toFixed(2)}`;
+    log.innerHTML = sales.slice(0, 20).map(s => `
+      <div class="log-item">
+        <div>
+          <div class="log-name">${s.productName}</div>
+          <div class="log-meta">Qty: ${s.qty} &bull; GH₵${parseFloat(s.price).toFixed(2)}/unit &bull; ${s.date}</div>
+        </div>
+        <div class="log-amt">GH₵ ${s.total.toFixed(2)}</div>
+      </div>
+    `).join('');
+  }
+
+  // Initial render
+  populateCatDropdowns();
+  renderTable();
+  renderSales();
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(err => console.log('SW error:', err));
+    });
+  }
+
+  // Install prompt
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById('installBanner').style.display = 'flex';
+  });
+
+  document.getElementById('installBtn').addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      document.getElementById('installBanner').style.display = 'none';
+    }
+  });
+
+  document.getElementById('dismissInstall').addEventListener('click', () => {
+    document.getElementById('installBanner').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
