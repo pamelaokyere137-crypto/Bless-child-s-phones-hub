@@ -1,1 +1,38 @@
-<html><head></head><body style="overflow-wrap: break-word; -webkit-nbsp-mode: space; line-break: after-white-space;"><div>const CACHE_NAME = ‘bcp-hub-v1’;</div><div>const FILES_TO_CACHE = [</div><div>‘./index.html’,</div><div>‘./manifest.json’</div><div>];</div><div><br></div><div>// Install: cache files</div><div>self.addEventListener(‘install’, (event) =&gt; {</div><div>event.waitUntil(</div><div>caches.open(CACHE_NAME).then((cache) =&gt; {</div><div>return cache.addAll(FILES_TO_CACHE);</div><div>})</div><div>);</div><div>self.skipWaiting();</div><div>});</div><div><br></div><div>// Activate: clean old caches</div><div>self.addEventListener(‘activate’, (event) =&gt; {</div><div>event.waitUntil(</div><div>caches.keys().then((keyList) =&gt;</div><div>Promise.all(</div><div>keyList.map((key) =&gt; {</div><div>if (key !== CACHE_NAME) return caches.delete(key);</div><div>})&nbsp;</div><div>)</div><div>)</div><div>);</div><div>self.clients.claim();</div><div>});</div><div><br></div><div>// Fetch: serve from cache, fall back to network</div><div>self.addEventListener(‘fetch’, (event) =&gt; {</div><div>event.respondWith(</div><div>caches.match(event.request).then((response) =&gt; {</div><div>return response || fetch(event.request);</div><div>})</div><div>);</div><div>});</div></body></html>
+const CACHE_NAME = ‘bcp-hub-v1’;
+const FILES_TO_CACHE = [
+‘./index.html’,
+‘./manifest.json’
+];
+
+// Install: cache files
+self.addEventListener(‘install’, (event) => {
+event.waitUntil(
+caches.open(CACHE_NAME).then((cache) => {
+return cache.addAll(FILES_TO_CACHE);
+})
+);
+self.skipWaiting();
+});
+
+// Activate: clean old caches
+self.addEventListener(‘activate’, (event) => {
+event.waitUntil(
+caches.keys().then((keyList) =>
+Promise.all(
+keyList.map((key) => {
+if (key !== CACHE_NAME) return caches.delete(key);
+})
+)
+)
+);
+self.clients.claim();
+});
+
+// Fetch: serve from cache, fall back to network
+self.addEventListener(‘fetch’, (event) => {
+event.respondWith(
+caches.match(event.request).then((response) => {
+return response || fetch(event.request);
+})
+);
+});
