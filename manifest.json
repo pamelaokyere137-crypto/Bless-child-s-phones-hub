@@ -1,0 +1,22 @@
+{
+  "name": "Bless Child's Phones Hub",
+  "short_name": "BC Phones Hub",
+  "description": "Stock management app for Bless Child's Phones Hub",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F3F4F6",
+  "theme_color": "#6B21A8",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='24' fill='%236B21A8'/><text y='130' x='96' text-anchor='middle' font-size='110' font-family='serif'>📱</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='60' fill='%236B21A8'/><text y='360' x='256' text-anchor='middle' font-size='300' font-family='serif'>📱</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
